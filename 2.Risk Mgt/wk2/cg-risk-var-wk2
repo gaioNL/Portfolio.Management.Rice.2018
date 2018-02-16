@@ -1,0 +1,552 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import math"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Consider the following distribution of returns:\n",
+    "\n",
+    "Probability\tReturn on A\tReturn on B\tReturn on C\n",
+    "\n",
+    "30%\t-20%\t-5%\t5%\n",
+    "\n",
+    "40%\t5%\t10%\t3%\n",
+    "\n",
+    "30%\t40%\t15%\t2%\n",
+    "\n",
+    "What is the expected return of security A - B - C? \n",
+    "\n",
+    "Round off your answer to two digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "A: 0.08\n",
+      "B: 0.07\n",
+      "C: 0.033\n"
+     ]
+    }
+   ],
+   "source": [
+    "print (\"A: \" + str(0.3*-0.2+0.4*0.05+0.3*0.4))\n",
+    "print (\"B: \" + str(0.3*-0.05+0.4*0.1+0.3*0.15))\n",
+    "print (\"C: \" + str(0.3*0.05+0.4*0.03+0.3*0.02))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using your answers for questions 1-3, \n",
+    "\n",
+    "now compute the expected return of a portfolio with 40% in A, 40% in B, and 20% in C. Round off your answer to two-digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentages rate (such as 5.55)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.0666\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(0.4 * 0.08 + 0.4 * 0.07 + 0.2 * 0.033)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using your answers for questions 1-3, \n",
+    "\n",
+    "what is the expected return of an equally weighted portfolio? \n",
+    "\n",
+    "Round off your final answer to two digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.061\n"
+     ]
+    }
+   ],
+   "source": [
+    "print((1/3) * 0.08 + (1/3) * 0.07 + (1/3) * 0.033)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "An investor has total wealth of $50,000 and wants to invest in a portfolio with 3 securities A, B, and C \n",
+    "\n",
+    "with expected returns E(RA) = 20%, E(RB) = 15% and E(RC) =17% respectively. \n",
+    "\n",
+    "If he chooses to invest $25,000 in security A, \n",
+    "\n",
+    "$12,500 in security B, and \n",
+    "\n",
+    "$12,500 in security C, \n",
+    "\n",
+    "what will be the expected return of this portfolio? \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.18\n"
+     ]
+    }
+   ],
+   "source": [
+    "ret_usd = 25000 * 0.2 + 12500 * 0.15 + 12500 * 0.17\n",
+    "print (ret_usd/50000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    " If he chooses to invest $20,000 in security A, \n",
+    "    \n",
+    "$10,000 in security B and \n",
+    "\n",
+    "$20,000 in security C, \n",
+    "\n",
+    "what will be the expected return of this portfolio?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.178\n"
+     ]
+    }
+   ],
+   "source": [
+    "ret_usd = 20000 * 0.2 + 10000 * 0.15 + 20000 * 0.17\n",
+    "print (ret_usd/50000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Suppose your investment budget is $300,000. \n",
+    "\n",
+    "In addition, you borrow an additional $120,000 investing the total available funds in equities. \n",
+    "\n",
+    "If the expected rate of return in equities is 8%, \n",
+    "\n",
+    "and you borrow at 5%, what is your expected portfolio return?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.092\n"
+     ]
+    }
+   ],
+   "source": [
+    "ret_eq = 420000 * 0.08\n",
+    "ret_usd = ret_eq - 120000 * 0.05\n",
+    "print (ret_usd/300000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "Consider the following distribution of returns:\n",
+    "\n",
+    "Probability\tReturn on A\tReturn on B\tReturn on C\n",
+    "\n",
+    "30%\t-20%\t-5%\t5%\n",
+    "\n",
+    "40%\t5%\t10%\t3%\n",
+    "\n",
+    "30%\t40%\t15%\t2%\n",
+    "\n",
+    "What is the standard deviation of security A,B,C?\n",
+    "\n",
+    "Round off your answer to two digits after the decimal point (such as 5.55)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "std A: 0.23366642891095846\n",
+      "std B: 0.08124038404635961\n",
+      "std C: 0.011874342087037918\n"
+     ]
+    }
+   ],
+   "source": [
+    "#ret A: 0.08\n",
+    "#ret B: 0.07\n",
+    "#ret C: 0.033\n",
+    "import math\n",
+    "print (\"std A: \" + str(math.sqrt(0.3 * (-0.2-0.08)**2 + 0.4 * (0.05-0.08)**2+ 0.3 *(0.4-0.08)**2) ) )\n",
+    "print (\"std B: \" + str(math.sqrt(0.3 * (-0.05-0.07)**2 + 0.4 * (0.1-0.07)**2+ 0.3 *(0.15-0.07)**2) ) )\n",
+    "print (\"std C: \" + str(math.sqrt(0.3 * (0.05-0.033)**2 + 0.4 * (0.03-0.033)**2+ 0.3 *(0.02-0.033)**2) ) )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What is the expected return of a portfolio with \n",
+    "\n",
+    "40% in A, \n",
+    "\n",
+    "20% in B and \n",
+    "\n",
+    "40% in C? \n",
+    "\n",
+    "Round off your final answer to two digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ret P 0.0592\n"
+     ]
+    }
+   ],
+   "source": [
+    "print (\"ret P \" + str(0.4 * 0.08 + 0.2 * 0.07 + 0.4 * 0.033))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Consider the following distribution of returns:\n",
+    "\n",
+    "Probability\tReturn on A\tReturn on B\tReturn on C\n",
+    "\n",
+    "30%\t-20%\t-5%\t5%\n",
+    "\n",
+    "40%\t5%\t10%\t3%\n",
+    "\n",
+    "30%\t40%\t15%\t2%\n",
+    "\n",
+    "Which of the following pairwise covariance measures are correct?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.017400000000000002\n",
+      "-0.0026400000000000004\n",
+      "-0.0009600000000000001\n"
+     ]
+    }
+   ],
+   "source": [
+    "#ret A: 0.08\n",
+    "#ret B: 0.07\n",
+    "#ret C: 0.033\n",
+    "covab = 0.3 * (-0.2 -0.08) * (-0.05-0.07) +0.4*(0.05-0.08)*(0.1-0.07) +0.3*(0.4-0.08)*(0.15-0.07) \n",
+    "print (covab)\n",
+    "covac = 0.3 * (-0.2 -0.08) * (0.05-0.033) +0.4*(0.05-0.08)*(0.03-0.033) +0.3*(0.4-0.08)*(0.02-0.033) \n",
+    "print (covac)\n",
+    "covbc = 0.3 * (-0.05-0.07) * (0.05-0.033) +0.4*(0.1-0.07)*(0.03-0.033) +0.3*(0.15-0.07) *(0.02-0.033) \n",
+    "print (covbc)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.9166023347994703\n",
+      "-0.9514764623988068\n",
+      "-0.9951526617137966\n"
+     ]
+    }
+   ],
+   "source": [
+    "pab = covab/ (math.sqrt(0.3 * (-0.2-0.08)**2 + 0.4 * (0.05-0.08)**2+ 0.3 *(0.4-0.08)**2)*\n",
+    "              math.sqrt(0.3 * (-0.05-0.07)**2 + 0.4 * (0.1-0.07)**2+ 0.3 *(0.15-0.07)**2) )\n",
+    "print(pab)\n",
+    "pac= covac/(math.sqrt(0.3 * (-0.2-0.08)**2 + 0.4 * (0.05-0.08)**2+ 0.3 *(0.4-0.08)**2)*\n",
+    "           math.sqrt(0.3 * (0.05-0.033)**2 + 0.4 * (0.03-0.033)**2+ 0.3 *(0.02-0.033)**2))\n",
+    "print(pac)\n",
+    "pbc = covbc/(math.sqrt(0.3 * (-0.05-0.07)**2 + 0.4 * (0.1-0.07)**2+ 0.3 *(0.15-0.07)**2)*\n",
+    "            math.sqrt(0.3 * (0.05-0.033)**2 + 0.4 * (0.03-0.033)**2+ 0.3 *(0.02-0.033)**2))\n",
+    "print (pbc)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Find the expected return of a portfolio that is equally weighted between securities A and C. \n",
+    "\n",
+    "Round off your final answer to two digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55) \n",
+    "\n",
+    "(Hint: Your answers to previous questions may be useful)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.0565\n"
+     ]
+    }
+   ],
+   "source": [
+    "print (0.5 * 0.08 + 0.5 * 0.033)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Compute the volatility of a portfolio that is equally invested in A and C.\n",
+    "\n",
+    "Round off your final answer to two digits after the decimal point (such as 5.55) \n",
+    "\n",
+    "(Hint: Your answers to previous questions may be useful.)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.11119914568017149\n"
+     ]
+    }
+   ],
+   "source": [
+    "#w(1) = the portfolio weight of the first asset\n",
+    "#w(2) = the portfolio weight of the second asset\n",
+    "#o(1) = the standard deviation of the first asset\n",
+    "#o(2) = the standard deviation of the second asset\n",
+    "#Cov(1,2) = the covariance of the two assets, which can be sampled to: q(1,2)o(1)o(2), \n",
+    "#where q(1,2) is the correlation between the two assets\n",
+    "#The formula for variance in a two-asset portfolio is:\n",
+    "#Variance = (w(1)^2 x o(1)^2) + (w(2)^2 x o(2)^2) + (2 x (w(1)o(1)w(2)o(2)q(1,2))\n",
+    "\n",
+    "w1 = 0.5\n",
+    "w2 = 0.5\n",
+    "o1 = math.sqrt(0.3 * (-0.2-0.08)**2 + 0.4 * (0.05-0.08)**2+ 0.3 *(0.4-0.08)**2)\n",
+    "o2 = math.sqrt(0.3 * (0.05-0.033)**2 + 0.4 * (0.03-0.033)**2+ 0.3 *(0.02-0.033)**2)\n",
+    "q12 = pac\n",
+    "\n",
+    "std_P = math.sqrt((w1**2 * o1**2) + (w2**2 * o2**2) + (2 * w1 * o1 * w2 * o2 * q12))\n",
+    "print (std_P)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Find the expected return of a portfolio with 60% in A and 40% in B.\n",
+    "\n",
+    "Round off your final answer to two digits after the decimal point. \n",
+    "\n",
+    "State your answer as a percentage rate (such as 5.55)\n",
+    "\n",
+    "(Hint: Your answers to previous questions may be useful.)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.07600000000000001\n"
+     ]
+    }
+   ],
+   "source": [
+    "print (0.6 * 0.08 + 0.4 * 0.07)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.17048167056900868\n"
+     ]
+    }
+   ],
+   "source": [
+    "w1 = 0.6\n",
+    "w2 = 0.4\n",
+    "o1 = math.sqrt(0.3 * (-0.2-0.08)**2 + 0.4 * (0.05-0.08)**2+ 0.3 *(0.4-0.08)**2)\n",
+    "o2 = math.sqrt(0.3 * (-0.05-0.07)**2 + 0.4 * (0.1-0.07)**2+ 0.3 *(0.15-0.07)**2)\n",
+    "q12 = pab\n",
+    "std_P = math.sqrt((w1**2 * o1**2) + (w2**2 * o2**2) + (2 * w1 * o1 * w2 * o2 * q12))\n",
+    "print (std_P)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
